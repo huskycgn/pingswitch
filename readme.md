@@ -8,7 +8,7 @@ Das Skript funktioniert auf Windows und Linux.
 
 ## Anforderungen:
 
-Es werden die requests und die icmplib Libraries benötigt.<br>
+Es werden die *requests* und die *icmplib* Libraries benötigt.<br>
 Die können folgendermaßen installiert werden:
 <br><br>
 *pip3 install requests*<br>
