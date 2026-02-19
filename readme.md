@@ -1,23 +1,21 @@
 # Pingswitch Readme
 
-Dieses Skript prüft ob ein Host auf Pings antwortet.
-Wenn nicht wird ein Shelly Plug erst aus und dann wieder eingeschaltet.
-Ist der Shelly Plug bereits aus, 
-wird er eingeschaltet.
+Dieses Skript prüft ob ein Host auf Pings antwortet.<br>
+Wenn nicht wird ein Shelly Plug erst aus und dann wieder eingeschaltet.<br>
+Ist der Shelly Plug bereits aus, wird er eingeschaltet.<br>
 
 Das Skript funktioniert auf Windows und Linux.
 
 ## Anforderungen:
 
-Es werden die requests und die icmplib Libraries benötigt.
+Es werden die requests und die icmplib Libraries benötigt.<br>
 Die können folgendermaßen installiert werden:
-
+<br><br>
 *pip3 install requests*<br>
 *pip3 install icmplib*
-
-## Einrichtung:
-
-Es empfiehlt sich einen cronjob für die regelmäßige Ausführung einzurichten.
+<br>
+## Einrichtung:<br>
+Es empfiehlt sich einen cronjob für die regelmäßige Ausführung einzurichten.<br>
 
 Beispiel für Ausführung per cronjob in<br> 
 */etc/crontab:* <br>
