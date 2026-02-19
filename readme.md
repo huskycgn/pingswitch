@@ -15,6 +15,14 @@ Die können folgendermaßen installiert werden:
 *pip3 install icmplib*
 <br>
 ## Einrichtung:<br>
+
+Die Konstanten<br> *SHELLY_IP = "192.168.x.x"* <br>
+(IP des Shelly Plugs)
+<br>und<br>
+*SWITCH_HOST_IP = "192.168.x.x"*
+<br>(IP des Hosts der geprüft werden soll)<br>
+In der *main.py* Datei müssen angepasst werden.<br>
+
 Es empfiehlt sich einen cronjob für die regelmäßige Ausführung einzurichten.<br>
 
 Beispiel für Ausführung per cronjob in<br> 
