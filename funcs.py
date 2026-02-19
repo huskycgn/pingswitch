@@ -21,5 +21,5 @@ def get_shelly_lan(ipaddress):
         return "Error"
 
 def check_host(address):
-    host = icmplib.ping(address=address, count=1, interval=1, timeout=2)
+    host = icmplib.ping(address=address, count=1, interval=1, timeout=2, privileged=False)
     return host.is_alive
