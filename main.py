@@ -2,10 +2,10 @@ from funcs import *
 from time import sleep
 
 SHELLY_IP = "192.168.x.x"
-# hier die IP Adresse des Shelly Geräts eintragen, findet man in der App.
+# hier die IP-Adresse des Shelly Geräts eintragen, findet man in der App.
 
 SWITCH_HOST_IP = "192.168.x.x"
-# hier die IP Adresse des Servers eintragen, gegen den geprüft werden soll.
+# hier die IP-Adresse des Servers eintragen, gegen den geprüft werden soll.
 
 if not check_host(SWITCH_HOST_IP):
     print("Host nicht erreichbar!")
