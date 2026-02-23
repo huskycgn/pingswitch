@@ -34,6 +34,6 @@ Es empfiehlt sich einen cronjob für die regelmäßige Ausführung einzurichten.
 Beispiel für Ausführung per cronjob in<br> 
 */etc/crontab:* <br>
 ```
-**/5 * * * * /usr/bin/python3 /home/user/pingswitch/main.py*
+*/5 * * * * /usr/bin/python3 /home/user/pingswitch/main.py
 ```
 Das würde das Skript alle 5 Minuten ausführen.
