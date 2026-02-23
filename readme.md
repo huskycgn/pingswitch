@@ -1,39 +1,28 @@
-# Pingswitch Readme
+# 📡 Pingswitch
 
-Dieses Skript prüft, ob ein Host auf Pings antwortet.<br>
-Wenn nicht, wird der Shelly Plug erst aus und dann wieder eingeschaltet.<br>
-Ist der Shelly Plug bereits aus, wird er eingeschaltet.<br>
+[![Python Version](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org)
+[![Platform](https://img.shields.io/badge/platform-windows%20%7C%20linux-lightgrey.svg)](#)
 
-Das Skript funktioniert auf Windows und Linux.
+Ein leichtgewichtiges Automatisierungstool, das die Erreichbarkeit eines Netzwerk-Hosts prüft und bei Bedarf einen **Shelly Plug** schaltet (Power Cycle), um hängengebliebene Geräte neu zu starten.
 
-## Anforderungen:
+---
 
-Es werden die *requests* und die *icmplib* Libraries benötigt.<br>
-Die können folgendermaßen installiert werden:
-<br>
-```
-pip3 install requests
-pip3 install icmplib
-```
-## Einrichtung:<br>
+## 🚀 Funktionsweise
 
-Die Konstanten<br>
-```
-SHELLY_IP = "192.168.x.x"
-(IP des Shelly Plugs)
-```
-und
-```
-SWITCH_HOST_IP = "192.168.x.x"
-(IP des Hosts der geprüft werden soll)
-```
-In der *main.py* Datei müssen angepasst werden.<br>
+Das Skript überwacht ein Zielgerät per Ping. Je nach Status reagiert es wie folgt:
 
+* **Host ist offline:** Der Shelly Plug wird kurz aus- und nach 10 Sekunden wieder eingeschaltet (Reboot-Zyklus).
+* **Plug ist aus:** Falls der Shelly Plug bereits ausgeschaltet ist, wird er automatisch aktiviert.
+* **Host ist online:** Keine Aktion erforderlich – alles läuft wie gewünscht.
 
-Es empfiehlt sich einen cronjob für die regelmäßige Ausführung einzurichten.<br>
-Beispiel für Ausführung per cronjob in<br> 
-*/etc/crontab:* <br>
-```
-*/5 * * * * /usr/bin/python3 /home/user/pingswitch/main.py
-```
-Das würde das Skript alle 5 Minuten ausführen.
+> [!TIP]
+> Ideal für Router, Access Points oder Server, die gelegentlich einen "harten" Neustart benötigen, um wieder erreichbar zu sein.
+
+---
+
+## 🛠 Anforderungen
+
+Pingswitch funktioniert unter **Windows** und **Linux**. Du benötigst Python 3 und die folgenden Bibliotheken:
+
+```bash
+pip3 install requests icmplib
