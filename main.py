@@ -1,22 +1,36 @@
-from funcs import *
 from time import sleep
+from funcs import is_host_alive, get_shelly_status, switch_shelly_lan
 
+# --- KONFIGURATION ---
 SHELLY_IP = "192.168.x.x"
-# hier die IP-Adresse des Shelly Geräts eintragen, findet man in der App.
+TARGET_HOST = "192.168.x.x"
+REBOOT_DELAY = 10  # Sekunden Wartezeit beim Power-Cycle
 
-SWITCH_HOST_IP = "192.168.x.x"
-# hier die IP-Adresse des Servers eintragen, gegen den geprüft werden soll.
 
-if not check_host(SWITCH_HOST_IP):
-    print("Host nicht erreichbar!")
-    if get_shelly_lan(SHELLY_IP):
-        print("Shelly liefert Strom, schalte ab!")
-        switch_shelly_lan(SHELLY_IP)
-        print("Warte 10 Sekunden, dann schalte Shelly wieder ein!")
-        sleep(10)
-        print("Shelly wieder eingeschaltet!")
-        switch_shelly_lan(SHELLY_IP)
+def main():
+    print(f"Prüfe Status von {TARGET_HOST}...")
+
+    if is_host_alive(TARGET_HOST):
+        print("✅ Host erreichbar. Alles in Ordnung.")
+        return
+
+    print("⚠️ Host nicht erreichbar!")
+
+    # Status prüfen: Liefert der Shelly Strom?
+    is_on = get_shelly_status(SHELLY_IP)
+
+    if is_on:
+        print("🔌 Shelly ist AN. Starte Power-Cycle (Neustart)...")
+        switch_shelly_lan(SHELLY_IP)  # Ausschalten
+        print(f"Warte {REBOOT_DELAY}s...")
+        sleep(REBOOT_DELAY)
+        switch_shelly_lan(SHELLY_IP)  # Einschalten
+        print("🚀 Shelly wurde neu gestartet.")
     else:
-        print("Shelly liefert keinen Strom, schalte ein!")
+        print("🔌 Shelly ist AUS. Schalte jetzt ein...")
         switch_shelly_lan(SHELLY_IP)
-else: print("Host erreichbar!")
+        print("🚀 Shelly wurde aktiviert.")
+
+
+if __name__ == "__main__":
+    main()
